@@ -73,7 +73,7 @@ The shared contract is listed first; the properties that differ between the two 
 | Submission cap | 300 per episode, 120 s cooldown |
 | Evaluator-only snapshot interval | 1800 s |
 | Underlying material | observable behavior of public production libraries (libpcap 1.10.6, FFmpeg libswscale) |
-| Release license | MIT |
+| Release license | CC BY-NC-ND 4.0 |
 
 Bundle-specific properties:
 
@@ -254,7 +254,7 @@ Four gates hold today. Task bytes are content-addressed, so a bundle identifier 
 
 ## License
 
-Released under the [MIT License](LICENSE), copyright Ethara.AI 2026. The upstream projects these bundles re-implement, libpcap and FFmpeg, carry their own licenses, which govern their source and any compiled reference artifact shipped inside a bundle independently of this release.
+Released under CC BY-NC-ND 4.0, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International, copyright Ethara.AI 2026. Share with attribution for non-commercial use, no derivatives. The upstream projects these bundles re-implement, libpcap and FFmpeg, carry their own licenses, which govern their source and any compiled reference artifact shipped inside a bundle independently of this release.
 
 ## Contact
 
