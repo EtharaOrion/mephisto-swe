@@ -42,7 +42,7 @@ Same task, same budget, different dynamics: on libpcap the Opus 5 run takes most
 
 Two self-contained bundles, addressed by UUID at the repository root, in one family.
 
-### Systems & Software Engineering (reimplementation)
+### Systems & Software Engineering
 
 | Bundle | Task | Deliverable surface | Graded against | Toolchain |
 | --- | --- | --- | --- | --- |
