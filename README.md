@@ -216,7 +216,7 @@ The score is zero unless the library builds from source, passes the correctness 
 
 ## Reproduction
 
-Every structural figure in this document recomputes from the public tree under a pinned interpreter.
+Every structural figure in this document recomputes from the public tree under a pinned interpreter. Both images are single-arch; score reproduction requires matching hardware.
 
 ```bash
 python3.11 - <<'PY'
