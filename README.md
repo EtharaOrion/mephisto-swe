@@ -10,7 +10,7 @@
 
 ## Abstract
 
-Mephisto publishes two reinforcement learning environments inside one capability family, Systems & Software Engineering: production-grade code where an agent has to satisfy a correctness target and a performance target at the same time, across interdependent modules, at a scale no single edit resolves. Both demand behavioral re-implementation of a production library. One rebuilds libpcap 1.10.6's packet filter compiler and is graded on exact bytecode and exact error-string equality; the other rebuilds FFmpeg's libswscale and is graded through an absolute correctness gate and then on measured speedup. Each is a containerized workspace with a twelve hour interaction window, a continuous reward in `[0, 1]`, and a separate judge container holding evaluation assets the agent never sees. Each measures whether an agent improves across a long episode under repeated graded feedback, rather than whether it produces one correct endpoint answer. This release carries the structural contract that holds across Mephisto families: the two-container work-and-judge split, the multi-round delivery feedback protocol, and the full recorded submission history that makes an in-episode learning curve legible, here across three recorded runs and two frontier models.
+Mephisto publishes two reinforcement learning environments inside one capability family, Systems & Software Engineering: production-grade code where an agent has to satisfy a correctness target and a performance target at the same time, across interdependent modules, at a scale no single edit resolves. Both demand behavioral re-implementation of a production library. One rebuilds libpcap 1.10.6's packet filter compiler and is graded on exact bytecode and exact error-string equality; the other rebuilds FFmpeg's libswscale and is graded through an absolute correctness gate and then on measured speedup. Each is a containerized workspace with a twelve hour interaction window, a continuous reward in `[0, 1]`, and a separate judge container holding evaluation assets the agent never sees. Each measures whether an agent improves across a long episode under repeated graded feedback, rather than whether it produces one correct endpoint answer. This release carries the structural contract that holds across Mephisto families: the two-container work-and-judge split, the multi-round delivery feedback protocol, and the full recorded submission history that makes an in-episode learning curve legible, here across four recorded runs and two frontier models.
 
 ## Why this is hard
 
@@ -24,12 +24,12 @@ Difficulty is read off measured frontier reward across 12-hour runs rather than 
 
 | Bundle | Recorded run | Agent and model | Best score | Best round | Rounds |
 | --- | --- | --- | --- | --- | --- |
-| `62b54382` libpcap bpf codegen fidelity | `opus-5` | `claude-code`, `claude-opus-5[1m]` | 0.9956 | `auto-15` | 113 |
-| `62b54382` libpcap bpf codegen fidelity | `gpt-5.6-sol` | `codex`, `gpt-5.6-sol` | 0.8464 | `agent-252` | 299 |
 | `f6424bd2` ffmpeg swscale reimplementation | `opus-5` | `claude-code`, `claude-opus-5[1m]` | 0.7805 | `agent-88` | 112 |
 | `f6424bd2` ffmpeg swscale reimplementation | `gpt-5.6-sol` | `codex`, `gpt-5.6-sol` | 0.4355 | `agent-218` | 241 |
+| `62b54382` libpcap bpf codegen fidelity | `opus-5` | `claude-code`, `claude-opus-5[1m]` | 0.9956 | `auto-15` | 113 |
+| `62b54382` libpcap bpf codegen fidelity | `gpt-5.6-sol` | `codex`, `gpt-5.6-sol` | 0.8464 | `agent-252` | 299 |
 
-The two reward geometries, exact-match conformance and correctness-gated speedup, are described in [Scoring methodology](#scoring-methodology) and are not commensurable with each other. They are reported per bundle rather than folded into one difficulty index. Because the libpcap bundle carries two recorded runs on the same graded surface, it also shows two different shapes of the same 12 hours.
+The two reward geometries, exact-match conformance and correctness-gated speedup, are described in [Scoring methodology](#scoring-methodology) and are not commensurable with each other. They are reported per bundle rather than folded into one difficulty index. Both bundles carry two recorded runs, one per frontier model, so each shows two different agent dynamics on the same graded surface.
 
 <p align="center"><sub><strong>FFmpeg swscale Reimplementation &middot; run: opus-5 &middot; claude-code / claude-opus-5[1m] &middot; best score: 0.7805</strong></sub></p>
 
@@ -96,7 +96,7 @@ Bundle-specific properties:
 | Result parser | `structured_json` | `pytest_v` |
 | Reward composition | `0.88·C + 0.12·P` conformance with gated throughput | correctness gate → geometric-mean speedup |
 | Reference availability | source, headers, binary and docs all withheld | scalar C source and reference binary provided, deleted before scoring |
-| Recorded runs | `opus-5`, `gpt-5.6-sol` | `opus-5` |
+| Recorded runs | `opus-5`, `gpt-5.6-sol` | `opus-5`, `gpt-5.6-sol` |
 
 ## Related work
 
@@ -176,6 +176,7 @@ The recorded submission counts below are properties of the published tree rather
 | `62b54382` libpcap bpf codegen fidelity | `gpt-5.6-sol` | 276 | 23 | 299 |
 | `62b54382` libpcap bpf codegen fidelity | `opus-5` | 90 | 23 | 113 |
 | `f6424bd2` ffmpeg swscale reimplementation | `opus-5` | 89 | 23 | 112 |
+| `f6424bd2` ffmpeg swscale reimplementation | `gpt-5.6-sol` | 218 | 23 | 241 |
 
 ## Scoring methodology
 
