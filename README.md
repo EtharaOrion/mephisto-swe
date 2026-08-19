@@ -42,7 +42,7 @@ The two reward geometries, exact-match conformance and correctness-gated speedup
 
 <p align="center"><img alt="FFmpeg swscale reimplementation, Claude Opus 5, 12-hour run. Score against elapsed minutes. A step to 0.63 inside 90 minutes, a long plateau near 0.67, then a late break to 0.78 after 600 minutes." src="f6424bd2-3d99-5647-9f59-6323ace5d907/plots/opus-5.png" width="820"></p>
 
-<p align="center"><sub><strong>FFmpeg swscale Reimplementation &middot; run: gpt-5.6-sol &middot; codex / gpt-5.6-sol</strong></sub></p>
+<p align="center"><sub><strong>FFmpeg swscale Reimplementation &middot; run: gpt-5.6-sol &middot; codex / gpt-5.6-sol &middot; best score: 0.4355</strong></sub></p>
 
 <p align="center"><img alt="FFmpeg swscale reimplementation, GPT-5.6-sol, 12-hour run. Score against elapsed minutes." src="f6424bd2-3d99-5647-9f59-6323ace5d907/plots/gpt-5.6-sol.png" width="820"></p>
 
