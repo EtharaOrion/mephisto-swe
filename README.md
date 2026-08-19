@@ -30,11 +30,21 @@ Difficulty is read off measured frontier reward across 12-hour runs rather than 
 
 The two reward geometries, exact-match conformance and correctness-gated speedup, are described in [Scoring methodology](#scoring-methodology) and are not commensurable with each other. They are reported per bundle rather than folded into one difficulty index. Because the libpcap bundle carries two recorded runs on the same graded surface, it also shows two different shapes of the same 12 hours.
 
+<p align="center"><sub><strong>libpcap BPF Codegen Fidelity &middot; run: opus-5 &middot; claude-code / claude-opus-5[1m] &middot; best score: 0.9956</strong></sub></p>
+
 <p align="center"><img alt="libpcap BPF codegen fidelity, Claude Opus 5, 12-hour run. Score against elapsed minutes, with the running best drawn over per-submission points. An early staircase clears 0.9 inside 90 minutes and the run finishes at 0.9956." src="62b54382-a910-5b29-ad0e-1efa993cc615/plots/opus-5.png" width="820"></p>
+
+<p align="center"><sub><strong>libpcap BPF Codegen Fidelity &middot; run: gpt-5.6-sol &middot; codex / gpt-5.6-sol &middot; best score: 0.8464</strong></sub></p>
 
 <p align="center"><img alt="libpcap BPF codegen fidelity, GPT-5.6, 12-hour run. Score against elapsed minutes. A smooth concave climb from 0.23 saturates near 0.84 after roughly 300 minutes." src="62b54382-a910-5b29-ad0e-1efa993cc615/plots/gpt-5.6-sol.png" width="820"></p>
 
+<p align="center"><sub><strong>FFmpeg swscale Reimplementation &middot; run: opus-5 &middot; claude-code / claude-opus-5[1m] &middot; best score: 0.7805</strong></sub></p>
+
 <p align="center"><img alt="FFmpeg swscale reimplementation, Claude Opus 5, 12-hour run. Score against elapsed minutes. A step to 0.63 inside 90 minutes, a long plateau near 0.67, then a late break to 0.78 after 600 minutes." src="f6424bd2-3d99-5647-9f59-6323ace5d907/plots/opus-5.png" width="820"></p>
+
+<p align="center"><sub><strong>FFmpeg swscale Reimplementation &middot; run: gpt-5.6-sol &middot; codex / gpt-5.6-sol</strong></sub></p>
+
+<p align="center"><img alt="FFmpeg swscale reimplementation, GPT-5.6-sol, 12-hour run. Score against elapsed minutes." src="f6424bd2-3d99-5647-9f59-6323ace5d907/plots/gpt-5.6-sol.png" width="820"></p>
 
 Same task, same budget, different dynamics: on libpcap the Opus 5 run takes most of its score in a staircase inside the first 90 minutes and spends the rest of the window buying the last few points of exactness, while the GPT-5.6 run climbs smoothly and flattens near 0.84. The swscale run holds a plateau near 0.67 through the middle of the run before a late break to 0.7805 past the tenth hour; its best submission cleared correctness on 30 of 30 hidden workloads at a raw geometric-mean speedup of 122.77x over the same-machine C-scalar baseline. That raw speedup is mapped onto the `[0, 1]` scale through a log anchor inherited from the x86 touchstone. The ARM recalibration of that anchor is still pending and is recorded as such in `task.toml`; the mapping is monotonic, so it relabels rather than reorders, and the raw speedup is retained in `reward.json`.
 
