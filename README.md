@@ -271,3 +271,9 @@ Released under CC BY-NC-ND 4.0, Creative Commons Attribution-NonCommercial-NoDer
 ## Contact
 
 Work with us, report a flaw, or send a bundle. The organization page is [Ethara.AI on GitHub](https://github.com/Ethara-Ai). For security disclosures and contribution routes, please open an issue or contact the organization directly.
+
+---
+
+## Copyright
+
+Copyright (c) 2026 Green Rider Technology LLP (Ethara AI). All rights reserved.
